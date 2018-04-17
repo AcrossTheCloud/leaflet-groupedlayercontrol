@@ -232,7 +232,11 @@ L.Control.GroupedLayers = L.Control.extend({
       } else {
         input = document.createElement('input');
         input.type = 'checkbox';
-        input.className = 'leaflet-control-layers-selector';
+        if (obj.name.startsWith('-')) {
+          input.className = 'leaflet-control-layers-element-selector';
+        } else {
+          input.className = 'leaflet-control-layers-selector';
+        }
         input.defaultChecked = checked;
       }
     } else {
@@ -244,6 +248,9 @@ L.Control.GroupedLayers = L.Control.extend({
     L.DomEvent.on(input, 'click', this._onInputClick, this);
 
     var name = document.createElement('span');
+    if (obj.name.startsWith('-')) {
+      name.className = 'leaflet-control-layers-group-element';
+    }
     name.innerHTML = ' ' + obj.name;
 
     label.appendChild(input);
