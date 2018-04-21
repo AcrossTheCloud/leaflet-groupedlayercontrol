@@ -315,7 +315,7 @@ L.Control.GroupedLayers = L.Control.extend({
 
     for (i = 0; i < inputsLen; i++) {
       input = inputs[i];
-      if (input.groupID === this.groupID && input.className === 'leaflet-control-layers-selector') {
+      if (input.groupID === this.groupID && (input.className === 'leaflet-control-layers-selector' || input.className === 'leaflet-control-layers-element-selector')) {
         input.checked = this.checked;
         obj = this_legend._getLayer(input.layerId);
         if (input.checked && !this_legend._map.hasLayer(obj.layer)) {
@@ -338,7 +338,7 @@ L.Control.GroupedLayers = L.Control.extend({
 
     for (i = 0; i < inputsLen; i++) {
       input = inputs[i];
-      if (input.className === 'leaflet-control-layers-selector') {
+      if (input.className === 'leaflet-control-layers-selector' || input.className === 'leaflet-control-layers-element-selector') {
         obj = this._getLayer(input.layerId);
 
         if (input.checked && !this._map.hasLayer(obj.layer)) {
